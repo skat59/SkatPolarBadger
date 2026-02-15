@@ -11,7 +11,8 @@ class FormValidator {
 		}
 		$idn = new \ProjectSoft\IdnaConvert(array('idn_version'=>2008));
 		$email = $idn->encode($value);
-		return (preg_match("/^([\w-._]+@[\w-._]+\.[\w-]{2,})$/i", $email));
+		file_put_contents(__DIR__ . "/email_valid.txt", print_r($email, true));
+		return (preg_match("/^([\._\w-]+@[\._\w-]+\.[\w-]{2,})$/i", $email));
 	}
 	
 	// Validate Phone
